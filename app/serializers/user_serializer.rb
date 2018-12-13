@@ -5,7 +5,8 @@ class UserSerializer < ActiveModel::Serializer
     self.object.tasks.map do |task|
       {task_type: task.task_type, 
       task_quantity: task.task_quantity,
-      each_task_length: task.each_task_length}
+      each_task_length: task.each_task_length,
+      check_time: task.check_time}
     end
   end
 
