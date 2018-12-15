@@ -12,8 +12,9 @@ class UserSerializer < ActiveModel::Serializer
 
   def questionnaire 
     {job_title: self.object.questionnaire.job_title,
-    work_hours: self.object.questionnaire.work_hours, 
-    breaks: self.object.questionnaire.breaks,
+    working_hours_from: self.object.questionnaire.working_hours_from, 
+    working_hours_to: self.object.questionnaire.working_hours_to,
+    take_breaks: self.object.questionnaire.take_breaks,
     breaks_quantity: self.object.questionnaire.breaks_quantity,
     break_length: self.object.questionnaire.break_length}
   end
