@@ -15,7 +15,7 @@ class Api::V1::UsersController < ApplicationController
 
     def signup 
         @user = User.new(user_params)
-        if @user.save 
+        if @user.save
             render json: {id: @user.id, token: issue_token({id: @user.id})}
         else
             render json: {error: 'Unable to create this user'}, status: 400

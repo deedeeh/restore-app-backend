@@ -2,7 +2,7 @@ class Api::V1::QuestionnairesController < ApplicationController
     before_action :find_questionnaire, only: [:show, :update]
 
     def show 
-        if @questionnaire 
+        if @questionnaire
             render json: @questionnaire
         else
             render json: {error: 'Questionnaire was not found'}, status: 404
@@ -30,10 +30,11 @@ class Api::V1::QuestionnairesController < ApplicationController
     private 
 
     def questionnaire_params 
-        params.require(:questionnaire).permit(:user_id, :job_title, :working_hours_from, :take_breaks, :breaks_quantity, :break_length, :working_hours_to)
+        params.require(:questionnaire).permit(:user_id, :job_title, :working_hours_from, :take_breaks, :breaks_interval, :break_length, :working_hours_to)
     end
 
     def find_questionnaire
-        @questionnaire = Questionnaire.find(params[:id])
+        @user = get_current_user
+        @questionnaire = Questionnaire.find_by(user: @user)
     end
 end
