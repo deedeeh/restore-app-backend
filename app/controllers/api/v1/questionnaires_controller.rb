@@ -30,7 +30,7 @@ class Api::V1::QuestionnairesController < ApplicationController
     private 
 
     def questionnaire_params 
-        params.require(:questionnaire).permit(:user_id, :job_title, :work_hours, :breaks, :breaks_quantity, :break_length)
+        params.require(:questionnaire).permit(:user_id, :job_title, :working_hours_from, :take_breaks, :breaks_quantity, :break_length, :working_hours_to)
     end
 
     def find_questionnaire
