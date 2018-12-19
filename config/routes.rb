@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       post 'signup', to: 'users#signup'
       post 'login', to: 'users#login'
       get 'validate', to: 'users#validate'
+      resources :users, only: [:show]
       resources :questionnaires, only: [:create]
       get 'questionnaire', to: 'questionnaires#show'
       put 'questionnaire', to: 'questionnaires#update' 
