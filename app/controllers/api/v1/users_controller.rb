@@ -27,7 +27,7 @@ class Api::V1::UsersController < ApplicationController
             )
             render json: {user: serialize_user(@user), token: issue_token({id: @user.id})}
         else
-            render json: {error: 'Unable to create this user'}, status: 400
+            render json: {error: @user.errors.full_messages}, status: :not_acceptable
         end
     end 
 
