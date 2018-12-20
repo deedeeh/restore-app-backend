@@ -14,7 +14,7 @@ class Api::V1::QuestionnairesController < ApplicationController
         if @questionnaire.save 
             render json: @questionnaire
         else
-            render json: {error: 'Unable to create this questionnaire'}, status: 400
+            render json: {error: @questionnaire.errors.full_messages}, status: :not_acceptable
         end
     end 
 
