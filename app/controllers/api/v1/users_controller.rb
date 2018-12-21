@@ -17,12 +17,12 @@ class Api::V1::UsersController < ApplicationController
     def signup 
         @user = User.new(user_params)
         if @user.save
-            q = Questionnaire.new( user: @user, job_title: 'My job title', working_hours_from: '09:00', working_hours_to: '17:00', take_breaks: true, breaks_interval: 60, break_length: 10)
-            if q.save
-                render json: {user: serialize_user(@user), token: issue_token({id: @user.id})}
-            else
-                render json: {error: q.errors.full_messages}, status: :not_acceptable
-            end
+            # Questionnaire.new( user: @user, job_title: '', working_hours_from: '', working_hours_to: '', take_breaks: false, breaks_interval: nil, break_length: nil)
+            # if q.save
+            render json: {user: @user, token: issue_token({id: @user.id})}
+            # else
+            #     render json: {error: q.errors.full_messages}, status: :not_acceptable
+            # end
         else
             render json: {error: @user.errors.full_messages}, status: :not_acceptable
         end
@@ -38,6 +38,8 @@ class Api::V1::UsersController < ApplicationController
     end
 
     private 
+
+    # serialize_user(@user)
 
     def user_params 
         params.permit(:username, :name, :password)
