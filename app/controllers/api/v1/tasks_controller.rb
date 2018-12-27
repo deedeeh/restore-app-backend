@@ -10,7 +10,8 @@ class Api::V1::TasksController < ApplicationController
     end
 
     def create 
-        @task = Task.new(task_params)
+        @user = User.find(params[:id])
+        @task = Task.new(user: @user, :task_type: '', :task_quantity: nil, :each_task_length: nil, , :task_date: '', :task_quantity: nil)
         if @task.save 
             render json: @task
         else
@@ -21,7 +22,7 @@ class Api::V1::TasksController < ApplicationController
     private 
 
     def task_params 
-        params.require(:task).permit(:user_id, :task_type, :task_quantity, :each_task_length)
+        params.require(:task).permit(:user_id, :task_type, :task_quantity, :each_task_length, , :task_date, :task_quantity)
     end
 
 end
