@@ -1,13 +1,15 @@
 class Api::V1::BreaksController < ApplicationController
 
     def index 
-        @breaks = Break.all
+        @user = get_current_user
+        @breaks = Break.where(user: @user)
         render json: @breaks 
     end
 
     def create 
-        @user = User.find(params[:id])
-        @break = Break.new(user: @user, start: nil, end: nil, the_date: '', completed: nil)
+        @user = get_current_user
+        @break = Break.new(break_params)
+        @break.user = @user
         if @break.save 
             render json: @break
         else
@@ -18,6 +20,6 @@ class Api::V1::BreaksController < ApplicationController
     private 
 
     def break_params 
-        params.require(:break).permit(:user_id, :start, :end, :the_date, :completed)
+        params.require(:break).permit(:start, :end, :the_date, :completed)
     end
 end
