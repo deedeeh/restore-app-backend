@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_many :tasks
+    has_many :breaks
     has_one :questionnaire
 
     has_secure_password
