@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get 'questionnaire', to: 'questionnaires#show'
       put 'questionnaire', to: 'questionnaires#update' 
       resources :tasks, only: [:show, :create] 
+      resources :breaks, only: [:index, :create]
     end
   end
 end

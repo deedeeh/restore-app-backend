@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :username, :tasks, :questionnaire
+  attributes :id, :name, :username, :tasks, :questionnaire, :breaks
 
   def tasks 
     self.object.tasks.map do |task|
