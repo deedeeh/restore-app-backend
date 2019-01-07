@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_03_111440) do
+ActiveRecord::Schema.define(version: 2019_01_07_113802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 2019_01_03_111440) do
     t.integer "user_id"
     t.string "job_title"
     t.string "working_hours_from"
-    t.boolean "take_breaks"
     t.integer "breaks_interval"
     t.integer "break_length"
     t.datetime "created_at", null: false

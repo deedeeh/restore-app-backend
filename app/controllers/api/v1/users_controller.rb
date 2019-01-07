@@ -17,7 +17,7 @@ class Api::V1::UsersController < ApplicationController
     def signup 
         @user = User.new(user_params)
         if @user.save
-            q = Questionnaire.new( user: @user, job_title: 'My job title', working_hours_from: '09:00', working_hours_to: '17:00', take_breaks: true, breaks_interval: 60, break_length: 10)
+            q = Questionnaire.new( user: @user, job_title: 'My job title', working_hours_from: '09:00', working_hours_to: '17:00', breaks_interval: 60, break_length: 10)
             if q.save
                 render json: {user: serialize_user(@user), token: issue_token({id: @user.id})}
             else
